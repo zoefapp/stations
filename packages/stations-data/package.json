@@ -1,0 +1,40 @@
+{
+  "name": "stations-data",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "stations"
+  ],
+  "exports": {
+    "./web": {
+      "import": "./dist/web.mjs",
+      "require": "./dist/web.cjs"
+    },
+    "./node": {
+      "import": "./dist/node.mjs",
+      "require": "./dist/node.cjs"
+    }
+  },
+  "scripts": {
+    "build": "rimraf dist && unbuild",
+    "test:cjs": "vitest --config vitest.config.cjs",
+    "test:esm": "vitest --config vitest.config.mjs",
+    "test": "npm run test:cjs && npm run test:esm"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.14.11",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.2.2",
+    "unbuild": "^2.0.0",
+    "vitest": "^2.0.4"
+  },
+  "dependencies": {
+    "cross-fetch": "^4.0.0",
+    "pathe": "^1.1.2"
+  }
+}
